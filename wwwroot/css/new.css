@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Vollkorn&display=swap');
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: #FFF8F0;
+    color: #111D4A;
+    font-family: 'Vollkorn', serif;
+}
+
+#orderLabel{
+ display: inline-block;
+    font-size: 1.25em;
+}
+#orderlinks a p {
+    display: inline-block;
+    background-color: #92140C;
+    color: #FFF8F0;
+    padding: .25em .5em;
+    margin: .5em;
+    font-size: 1.25em;
+}
+    #orderlinks a p:hover{
+        box-shadow: .25em .25em .25em #111D4A;
+    }
+    #orderlinks a {
+        text-decoration: none;
+    }
+    a {
+        color: #92140C;
+    }
+input[type=submit] {
+    background-color: #92140C;
+    color: #FFCF99;
+    padding: .5em;
+    margin: 1em;
+}
+
+    input[type=submit]:hover {
+        box-shadow: .25em .25em .25em #111D4A;
+    }
+
+    #newEntry {
+        background-color: #111D4A;
+        color: #FFF8F0;
+        padding: .5em;
+        margin: .5em;
+        display: inline-block;
+        font-size: 1.5em;
+
+    }
+    #newEntry:hover {
+        box-shadow: .25em .25em .25em #92140C;
+    }
+    #newEntry a {
+        text-decoration: none;
+        color: #FFF8F0;
+
+    }
+#table {
+    color: #111D4A;
+    font-size: 1.5em;
+    border: solid #92140C;
+}
+    #table th {
+        background-color: #111D4A;
+        color: #FFF8F0;
+        border: solid #FFF8F0;
+        padding: .5em;
+        border-bottom: solid #92140C;
+     
+    }
+#table tr td:first-child{
+    font-weight: bold;
+    border-right: solid #92140C;
+}
+#table tr{
+    border-bottom:solid #111D4A;
+}
+#table tr td{
+    padding-left:.5em;
+}
+form {
+    color: #111D4A;
+    font-size: 1.25em;
+}
+#table tr td:last-child {
+    display: block;
+    border-left: solid #92140C;
+}
+
+#CRUD a:hover{
+    color: #111D4A;
+}
+header{
+    display: inline
+}
+header h1{
+    display:block;
+    background-color: #FFCF99;
+    border-radius: 20px;
+    text-align: center;
+    padding:.25em .5em;
+    box-shadow: .25em .25em .25em #92140C;
+    margin: 1em auto;
+    
+}
+#homeDiv{
+    display:block;
+}
