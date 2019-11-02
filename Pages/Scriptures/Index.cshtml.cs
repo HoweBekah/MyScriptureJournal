@@ -13,14 +13,15 @@ namespace MyScriptureJournal.Pages.Scriptures
 {
     public class IndexModel : PageModel
     {
-        private readonly MyScriptureJournal.Data.MyScriptureJournalContext _context;
+        private readonly MyScriptureJournalContext _context;
 
-        public IndexModel(MyScriptureJournal.Data.MyScriptureJournalContext context)
+        public IndexModel(MyScriptureJournalContext context)
         {
             _context = context;
         }
 
         public IList<Scripture> Scripture { get;set; }
+        public IList<Scripture> Scripture1 { get; set; }
         [BindProperty(SupportsGet = true)]
         public string SearchString { get; set; }
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
@@ -31,13 +32,13 @@ namespace MyScriptureJournal.Pages.Scriptures
         public string NameSort { get; set; }
         public string DateSort { get; set; }
         public string CurrentFilter { get; set; }
-        public string CurrentSort { get; set; }
+    
 
         public IList<Scripture> Scriptures { get; set; }
-        public async Task OnGetAsync(string sortOrder)
+        public async Task OnGetAsync(string sortOrder, string SearchString, string SearchNote)
         {
-            var scriptures = from m in _context.Scripture
-                         select m;
+            IQueryable<Scripture> scriptures = from s in _context.Scripture
+                         select s;
             if (!string.IsNullOrEmpty(SearchString))
             {
                 scriptures = scriptures.Where(s => s.Book.Contains(SearchString));
@@ -47,31 +48,31 @@ namespace MyScriptureJournal.Pages.Scriptures
                 scriptures = scriptures.Where(s => s.Notes.Contains(SearchNote));
             }
 
-            Scripture = await scriptures.ToListAsync();
+           
 
             NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             DateSort = sortOrder == "Date" ? "date_desc" : "Date";
 
-            IQueryable<Scripture> JournalInfo = from s in _context.Scripture
-                                             select s;
+            //IQueryable<Scripture> scriptures = from s in _context.Scripture1
+                                          //   select s;
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    JournalInfo = JournalInfo.OrderByDescending(s => s.Book);
+                    scriptures = scriptures.OrderByDescending(s => s.Book);
                     break;
                 case "Date":
-                    JournalInfo = JournalInfo.OrderBy(s => s.Date);
+                    scriptures = scriptures.OrderBy(s => s.Date);
                     break;
                 case "date_desc":
-                    JournalInfo = JournalInfo.OrderByDescending(s => s.Date);
+                    scriptures = scriptures.OrderByDescending(s => s.Date);
                     break;
                 default:
-                    JournalInfo = JournalInfo.OrderBy(s => s.Book);
+                    scriptures = scriptures.OrderBy(s => s.Book);
                     break;
             }
 
-            Scripture= await JournalInfo.AsNoTracking().ToListAsync();
+            Scripture = await scriptures.AsNoTracking().ToListAsync();
         }
     
     }

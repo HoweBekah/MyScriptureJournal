@@ -4,14 +4,12 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <header>
-        <h1>My Scripture Journal</h1>
-</header>
+  
         <p id="newEntry">
             <a asp-page="Create">Add Entry</a>
         </p>
   
-
+        
 <div id="orderlinks">
     <p id="orderLabel">Order By: </p>
     <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"><p>Book</p></a>
@@ -30,9 +28,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Scripture[0].Verse)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Scripture[0].Notes)
-            </th>
+            <!--<th>
+    @*  @Html.DisplayNameFor(model => model.Scripture[0].Notes)*@
+</th>-->
             <th>
                     @Html.DisplayNameFor(model => model.Scripture[0].Date)
             </th>
@@ -42,28 +40,28 @@
     <tbody>
         @foreach (var item in Model.Scripture)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Book)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Chapter)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Verse)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Notes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Date)
-                </td>
-                <td id="CRUD">
-                    <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
-                    <a asp-page="./Details" asp-route-id="@item.ID">Details</a>
-                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chapter)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Verse)
+            </td>
+            <!-- <td>
+       @* @Html.DisplayFor(modelItem => item.Notes)*@
+    </td>-->
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td id="CRUD">
+                <a asp-page="./Details" asp-route-id="@item.ID">Notes</a> 
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> 
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
