@@ -37,7 +37,7 @@ namespace MyScriptureJournal.Pages.Scriptures
         public IList<Scripture> Scriptures { get; set; }
         public async Task OnGetAsync(string sortOrder, string SearchString, string SearchNote)
         {
-            IQueryable<Scripture> scriptures = from s in _context.Scripture
+            IQueryable<Scripture> scriptures = from s in _context.Scripture 
                          select s;
             if (!string.IsNullOrEmpty(SearchString))
             {
